@@ -69,13 +69,7 @@ function prompt_skwp_setup {
 alias disable_git_info='DISABLE_GIT_INFO=1'
 alias enable_git_info='DISABLE_GIT_INFO=0'
 function set_k8s_context {
-  C=$1
-  if [[ "$C" == "" ]]; then
-    echo "Select your context:"
-    ls ~/.kube/*_config | xargs -n 1 basename | sed s/_config//g
-    read C
-  fi
-  export KCONTEXT=$C
+  set_k8s_context_core $*
   prompt_skwp_setup
 }
 prompt_skwp_setup

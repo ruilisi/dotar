@@ -2,6 +2,13 @@ NAMESPACE=default
 RUNNING_POD=""
 LEFT_ARGS=""
 KCONTEXT=""
+
+# aliases
+alias k="kubectl"
+alias kpg="kubectl get pods | grep"
+alias ksg="kubectl get service | grep"
+alias k_get_pods_sort_by_time="k get pods --sort-by=.metadata.creationTimestamp"
+
 function getpod {
   RAN=true
   function usage ()
@@ -156,4 +163,13 @@ function k_force_delete_pod () {
 }
 function k_get_containers_of_pod {
   k get pods $1 -o jsonpath='{.spec.containers[*].name}*'
+}
+function set_k8s_context_core {
+  C=$1
+  if [[ "$C" == "" ]]; then
+    echo "Select your context:"
+    ls ~/.kube/*_config | xargs -n 1 basename | sed s/_config//g
+    read C
+  fi
+  export KCONTEXT=$C
 }
