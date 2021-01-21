@@ -259,3 +259,4 @@ alias vim="nvim"
 
 ## source files
 alias ss="source ~/.zshrc"
+alias delete_all_binaries="find . -type f -perm -u+x -not -path './.git/*' | xargs rm"
