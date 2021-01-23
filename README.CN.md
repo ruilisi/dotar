@@ -22,7 +22,7 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/i
 **Scroll Mode**
 
 `PRE [`: 进入滚动模式
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
 `Enter`    | 复制文本         |
 `]`        | 复制滚动模式下的内容 |
@@ -34,20 +34,20 @@ Shortcut | Function
 
 Normal Mode
 
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
-`C-v`    | 视图模式 
-`C-x C-v`| 从系统粘贴板复制内容 
+`C-v`    | 视图模式
+`C-x C-v`| 从系统粘贴板复制内容
 `<L>tp`  | 切换粘贴
 
 Visual Mode
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
-`C-c`    | 复制     
+`C-c`    | 复制
 
 **Defined by Vim**
 
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
 `o`        |光标下方插入新的一行
 `O`      |光标上方插入新的一行
@@ -72,7 +72,7 @@ Shortcut | Function
 `Ctrl+\`   |显示(隐藏)文件树
 `[spc] c l`|快速注释或解除注释行
 `%s key1/key2/g`|将文档中的key1替换为key2
-`S-V`      | 选中文本       
+`S-V`      | 选中文本
 
 #### vim && markdown
 * 安装 `prettier`: `yarn global add prettier` 或 `npm install --global prettier`
@@ -197,7 +197,7 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 我们推荐在这个文件里设置你的用户信息是。另外，你可以将你的环境变量恰当地设置在你的 `~/.secrets`里。
 
 
-快捷键 | 命令 
+快捷键 | 命令
 :-------:|:--------:
 `ga`     |`git add`
 `gb`     |`git branch`
@@ -579,3 +579,31 @@ fix SpaceVim Unknown function: TSOnBufEnter
   * 打开vim  运行`:CheckHealth` 查看当前vim状态，有啥报错修复啥
   * 重新打开vim 再运行`:UpdateRemotePlugins`
   * 如果还不行，在`~/.local/share/nvim/rplugin.vim` 添加`call dein#reinstall(['nvim-typescript'])`,重新打开vim等待`nvim-typescript`插件安装
+  
+#### 问题汇总：
+
+报错：
+
+`npm ERR! Protocol "https:" not supported. Expected "http:"`
+
+解决方案:
+
+淘宝源：`npm config set registry https://registry.npm.taobao.org`
+
+原npm源：`npm config set registry http://registry.npmjs.org`
+
+检查node的版本号，选择v12.20.1以下的版本，请勿使用高版本的node
+
+```
+nvm ls
+nvm install v12.20.1
+nvm use v12.20.1
+nvm uninstall 版本号
+```
+
+重新安装neovim和typescrip，然后重新打开以下vim，等待插件安装成功即可
+
+* `npm install -g neovim`
+* `npm install -g typescrip`
+* 重新打开vim等待nvim-typescript插件安装
+ 
