@@ -20,7 +20,4 @@ export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_mod
 
 export HELM_HOME="$HOME/.helm"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-if [[ "$OSTYPE" != "darwin"* ]]; then
-  export PATH="$PATH:$HOME/.rvm/bin"
-fi
+export PATH="$PATH:$HOME/.rvm/bin"

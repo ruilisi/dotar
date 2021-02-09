@@ -33,15 +33,15 @@ Shortcut | Function |
 
 **Defined by Us**
 
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
-`C-v`      | Enter visual mode 
-`C-x C-v`  | Paste text from system clipboard 
+`C-v`      | Enter visual mode
+`C-x C-v`  | Paste text from system clipboard
 `\<L\>tp`  |toggle paste
 
 **Defined by Vim**
 
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
 `o`        |insert a new line below
 `O`      |insert a new line above
@@ -65,7 +65,12 @@ Shortcut | Function
 `n`        |go to the next content
 `N`      |go to the previous content
 `[spc] c l`|(un)comment the selected line
-`:%s/key1/key2/g`| replae Key1 with Key2 
+`:%s/key1/key2/g`| replae Key1 with Key2
+
+#### Spacevim
+Shortcut | Function
+:-------:|:--------:
+SPC f v d| open configuration file
 
 #### vim && markdown
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
@@ -180,7 +185,7 @@ YADR will take over your ~/.gitconfig, so if you want to store your git username
 
 We recommend setting your user information in this file. In addition, you can set your environment variables appropriately in your ~/.secrets.
 
-Shortcut | Alias 
+Shortcut | Alias
 :-------:|:--------:
 `ga`     |`git add`
 `gb`     |`git branch`
@@ -254,7 +259,7 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 #### Tmux
 
 C refer to Ctrl
-Shortcut | Function 
+Shortcut | Function
 :-------:|:--------:
 `h(jkl)` |`←(↓↑→)Move pane`
 `C-a c`  |`Craete a new pane`
@@ -269,7 +274,7 @@ Shortcut | Function
 
 #### Index
 
-#### Code search 
+#### Code search
 
 #### File index
 
