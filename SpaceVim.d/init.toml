@@ -54,6 +54,9 @@ name = "lang#ruby"
 name = "unite"
 
 [[layers]]
+name = "ctrlspace"
+
+[[layers]]
 name = "tmux"
 
 [[layers]]
