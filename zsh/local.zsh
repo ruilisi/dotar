@@ -15,7 +15,6 @@ QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
 
 #### nvm
 export NVM_DIR="$HOME/.nvm"
-export NODE_ENV=development
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use $NVM_VERSION
 export PATH="$PATH:$HOME/.nvm/versions/node/$NVM_VERSION/bin"
 
