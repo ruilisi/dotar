@@ -2,6 +2,9 @@ NAMESPACE=default
 RUNNING_POD=""
 LEFT_ARGS=""
 KCONTEXT=""
+VERBOSE=false
+SRC=""
+DST=""
 
 # aliases
 alias k="kubectl"
@@ -16,21 +19,27 @@ function getpod {
     echo "Usage :  $0 [options] [--]
     Options:
     -K            kubectl context
-    -R            not randomly select pod
+    -R            Not randomly select pod
+    -d            Destination
+    -s            Source
     -n NAMESPACE
     -p PROJECT
+    -v            Verbose
     -h            Display this message"
   }
-  while getopts ":hvK:Rp:" opt
+  while getopts ":hvs:d:K:Rp:" opt
   do
     case $opt in
-    R) RAN=false         ;;
-    h) usage; return 0   ;;
-    n) NAMESPACE=$OPTARG ;;
-    p) PROJECT=$OPTARG   ;;
-    K) KCONTEXT=$OPTARG  ;;
+    R) RAN=false          ;;
+    s) SRC=$OPTARG        ;;
+    d) DST=$OPTARG        ;;
+    n) NAMESPACE=$OPTARG  ;;
+    p) PROJECT=$OPTARG    ;;
+    K) KCONTEXT=$OPTARG   ;;
+    v) VERBOSE=true       ;;
+    h) usage; return 0    ;;
     *) echo -e "\n  Option does not exist: $OPTARG\n"
-       usage; return 1   ;;
+       usage; return 1    ;;
     esac
   done
   shift $(($OPTIND-1))
@@ -90,6 +99,19 @@ function kexec {
   if [[ $RUNNING_POD != "" ]]; then
     echo "kubectl -it -n $NAMESPACE exec $RUNNING_POD -- /bin/sh -c $LEFT_ARGS"
     kubectl -it -n $NAMESPACE exec $RUNNING_POD -- /bin/sh -c $LEFT_ARGS
+  fi
+}
+
+function cmd {
+  if $VERBOSE; then
+    echo "Running: $fg[green]$1$reset_color"
+  fi
+  eval $1
+}
+function kcp {
+  getpod $@
+  if [[ $RUNNING_POD != "" ]]; then
+    cmd "kubectl -n $NAMESPACE cp $RUNNING_POD:$SRC $DST"
   fi
 }
 
