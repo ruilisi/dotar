@@ -1,0 +1,36 @@
+# getopt
+snippet getopt
+  CMD=$${0:0}
+  function usage ()
+  {
+    echo "Usage :  $CMD [options] [--]
+	    Options:
+      --debug         Debug mode
+      --log-level=*   Set Log Level
+      -h        Display this message"
+	}
+  LOG_LEVEL=0
+  DEBUG=false
+  while getopts ":h-:" opt
+	do
+    case "${opt}" in
+    -)
+      case "${OPTARG}" in
+        debug)
+          DEBUG=true
+          ;;
+        loglevel=*)
+          val=${OPTARG#*=}
+          opt=${OPTARG%=$val}
+          echo "${opt} is set to: ${val}"
+          ;;
+        *)
+          echo "Unknown option --${OPTARG}"
+          ;;
+      esac;;
+    h)  usage; exit 0   ;;
+    *)  echo -e "\n  option does not exist : $optarg\n"
+        usage; exit 1   ;;
+	  esac
+	done
+	shift $(($OPTIND-1))
