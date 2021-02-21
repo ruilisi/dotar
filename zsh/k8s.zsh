@@ -64,14 +64,9 @@ function getpod {
       echo "Pod not found for $PROJECT"
       break
     fi
-    if [[ $RAN == 'true' ]];then
-      RUNNING_POD_INDEX=`shuf -i 1-${#RUNNING_PODS[@]} -n 1`
-      break
-    fi
-    if [ ${#RUNNING_PODS[@]} -eq 1 ];then
-      RUNNING_POD_INDEX=1
-      break
-    elif [ ${#RUNNING_PODS[@]} -gt 1 ];then
+    RUNNING_POD_INDEX=$(($RANDOM % ${#RUNNING_PODS[@]} + 1))
+    [[ $RAN == 'true' ]] && break
+    if [ ${#RUNNING_PODS[@]} -gt 1 ];then
       echo $fg[green]'Running Pods:'$reset_color
       INDEX=1
       for i in $RUNNING_PODS;do
