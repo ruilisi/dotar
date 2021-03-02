@@ -51,7 +51,7 @@ default_height = 30
 name = "lang#ruby"
 
 [[layers]]
-name = "unite"
+name = "denite"
 
 [[layers]]
 name = "ctrlspace"

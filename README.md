@@ -3,9 +3,13 @@
 [中文文档 Chinese document](/README.CN.md)
 
 ## Requirements
-`zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
+* `zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
 ```sh
 chsh -s $(which zsh)
+```
+* `Python 3` and `pynvim` as some layers(`denite`) can't be loaded if they are missing
+```
+python3 -m pip install --user --upgrade pynvim
 ```
 
 ## Install
