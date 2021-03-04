@@ -95,18 +95,20 @@ function strip_color() {
 function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
+# Replace replaces non-regex pattern recursively
+# Example: Replace 'ctx.Status(400)' "ctx.Status(http.StatusBadRequest)"
 function Replace () {
   if [[ "$(uname)" == "Darwin" ]]; then
     if [ "$#" -eq 3 ]; then
-      ag $2 -l -G "$1" | xargs sed -i '' s/$2/$3/g
+      ag -Q $2 -l -G $1 | xargs sed -i '' "s/$2/$3/g"
     elif [ "$#" -eq 2 ]; then
-      ag $1 -l | xargs sed -i '' s/$1/$2/g
+      ag -Q $1 -l | xargs sed -i '' "s/$1/$2/g"
     fi
   elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     if [ "$#" -eq 3 ]; then
-      ag $2 -l -G $1 | xargs sed -i s/$2/$3/g
+      ag -Q $2 -l -G $1 | xargs sed -i s/$2/$3/g
     elif [ "$#" -eq 2 ]; then
-      ag $1 -l | xargs sed -i s/$1/$2/g
+      ag -Q $1 -l | xargs sed -i s/$1/$2/g
     fi
   fi
 }
