@@ -41,7 +41,10 @@ ar          | Reload alias
 ESC C-x C-e |Edit current command line in vim
 
 ### Commands
-> $1, $2 represent arguments
+- `Replace`
+  - `Replace s SOURCE_TEXT -d DESTINATION_TEXT -f FILE_REGEX_PATTERH --separator=SEPERATOR`
+  - By default, `FILE_REGEX_PATTERN` is `.*`, SEPERATOR` is `;`
+  - Example: `Replace -s "/api/rule" -d "/dashboard/api/rule" -f ".*.ts"`
 - `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
 - `pp $1` -useage:`pp xx`, grep process by name
 - `set_proxy` -set terminal proxy use http proxy

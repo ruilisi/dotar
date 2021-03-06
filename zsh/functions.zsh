@@ -98,18 +98,53 @@ function docker_rm_all() {
 # Replace replaces non-regex pattern recursively
 # Example: Replace 'ctx.Status(400)' "ctx.Status(http.StatusBadRequest)"
 function Replace () {
+  CMD=$0
+  function usage ()
+  {
+    echo "Usage :  $CMD [options] [--]
+      Options:
+      -f            File regex pattern
+      -s            Source pattern
+      -d            Destination pattern
+      --seperator=  Seperator, # by default
+      -h            Display this message"
+  }
+  FILE_REGEX='.*'
+  SRC=""
+  DST=""
+  SEP=";"
+  DEBUG=false
+  while getopts ":hf:s:d:-:" opt
+    do
+      case "${opt}" in
+        -)
+        echo $OPTART
+        case "${OPTARG}" in
+          debug)
+            DEBUG=true
+            ;;
+          seperator=*)
+            val=${OPTARG#*=}
+            SEP=$val
+            ;;
+          *)
+            echo "Unknown option --${OPTARG}"
+            ;;
+        esac;;
+      f) FILE_REGEX=$OPTARG ;;
+      s) SRC=$OPTARG        ;;
+      d) DST=$OPTARG        ;;
+      h) usage; return 0    ;;
+      *) echo -e "\n  option does not exist : $OPTARG\n";
+         usage; return 1    ;;
+    esac
+  done
+  shift $(($OPTIND-1))
+  MATCHED_FILES=`ag -Q $SRC -l -G $FILE_REGEX`
   if [[ "$(uname)" == "Darwin" ]]; then
-    if [ "$#" -eq 3 ]; then
-      ag -Q $2 -l -G $1 | xargs sed -i '' "s/$2/$3/g"
-    elif [ "$#" -eq 2 ]; then
-      ag -Q $1 -l | xargs sed -i '' "s/$1/$2/g"
-    fi
+    echo $MATCHED_FILES | xargs sed -i '' "s$SEP$SRC$SEP$DST${SEP}g"
   elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-    if [ "$#" -eq 3 ]; then
-      ag -Q $2 -l -G $1 | xargs sed -i s/$2/$3/g
-    elif [ "$#" -eq 2 ]; then
-      ag -Q $1 -l | xargs sed -i s/$1/$2/g
-    fi
+    echo $MATCHED_FILES | xargs sed -i s${SEP}$SRC${SEP}$DST${SEP}g
   fi
 }
 function git-change-module-remote() {

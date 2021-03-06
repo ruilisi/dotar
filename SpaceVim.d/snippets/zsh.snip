@@ -29,7 +29,7 @@ snippet getopt
           ;;
       esac;;
     h)  usage; exit 0   ;;
-    *)  echo -e "\n  option does not exist : $optarg\n"
+    *)  echo -e "\n  option does not exist : $OPTARG\n"
         usage; exit 1   ;;
 	  esac
 	done
