@@ -1,5 +1,7 @@
 # Ruilisi dotfiles
 
+Forked from https://github.com/skwp/dotfiles
+
 ## Get started
 ### Requirements
 * `zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
@@ -165,7 +167,8 @@ Shortcut | Function |
 ### Vim Basic
 Refer [here](doc/vim-basic.md)
 
-### General Shortcuts
+### Shortcuts
+**General**
 Shortcut | Function
 :-------:|:--------:
 C-v      | Enter visual mode
@@ -174,6 +177,15 @@ C-x C-v  | Paste text from system clipboard
 SPC f v d| Open configuration file
 SPC g .  | Enter version control transient-state
 SPC l p  | Preview markdown
+
+**Typescript**
+Shortcut | Function
+:-------:|:--------:
+SPC l p  | Definitaion Preview
+SPC l t  | Type
+SPC l e  | Rename
+SPC l d  | Doc
+g d      | Go to definition
 
 ### markdown
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
@@ -187,14 +199,22 @@ SPC l p  | Preview markdown
 - `,qo` - Open quickfix window (The output of grep will go to this window)
 - `,qc` - close quickfix
 
+#### Typescript
+* fix `SpaceVim Unknown function: TSOnBufEnter`
+  * References
+    * https://github.com/SpaceVim/SpaceVim/issues/1800
+    * https://github.com/SpaceVim/SpaceVim/issues/3221
+  * Resolution steps
+    * Delete cache   rm -rf ~/.cache/vimfiles/.cache
+    * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
+    * Reopen vim and run `:UpdateRemotePlugins`
+    * If it still doesn't work, add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
+
 #### Rails & Ruby
-
-
 - `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
 - `,rs` & `,rl` to run rspec or a spec line in iTerm (check the iTerm window for information).
 - `,tt` Add `now: true`tag to a block of the spec file, and then test the block by `rspec --tag=now`.
 - `,ss` & `,sl` To achieve the same thing, by using `spring rspec`, one can make your Rails specs faster, by caching `Rails env` (must have spring gem installed).
-
 
 #### Vim Dev
 - `,vc` - (Vim command) Copy the command under the cursor and run it. Very useful for testing single-line changes in vimrc.
@@ -249,21 +269,3 @@ YADR will install the Solarized color scheme into iTerm. You can choose Solarize
 Homebrew is a missing OSX package management system, and it will be installed automatically.
 
 We automatically installed some commonly used packages, such as ctags, git, macvim, hub, and RipGrep (‘rg’). Note that our auto-completion plugin requires MacVim to support Lua. The installer knows how to install it, but if you have installed it before, you need to manually delete your previous MacVim.
-
-
-
-## Language support
-#### Typescript
-fix `SpaceVim Unknown function: TSOnBufEnter`
-* References
-  * https://github.com/SpaceVim/SpaceVim/issues/1800
-  * https://github.com/SpaceVim/SpaceVim/issues/3221
-* Resolution steps
-  * Delete cache   rm -rf ~/.cache/vimfiles/.cache
-  * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
-  * Reopen vim and run `:UpdateRemotePlugins`
-  * If it still doesn't work, add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
-
-## Troubleshoot
-Refer more at https://github.com/skwp/dotfiles
-
