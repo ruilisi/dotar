@@ -106,6 +106,7 @@ function Replace () {
       -f            File regex pattern
       -s            Source pattern
       -d            Destination pattern
+      -r            Remove line
       --seperator=  Seperator, # by default
       -h            Display this message"
   }
@@ -114,7 +115,8 @@ function Replace () {
   DST=""
   SEP=";"
   DEBUG=false
-  while getopts ":hf:s:d:-:" opt
+  REMOVE=false
+  while getopts ":rhf:s:d:-:" opt
     do
       case "${opt}" in
         -)
@@ -132,6 +134,7 @@ function Replace () {
             ;;
         esac;;
       f) FILE_REGEX=$OPTARG ;;
+      r) REMOVE=true        ;;
       s) SRC=$OPTARG        ;;
       d) DST=$OPTARG        ;;
       h) usage; return 0    ;;
@@ -141,10 +144,15 @@ function Replace () {
   done
   shift $(($OPTIND-1))
   MATCHED_FILES=`ag -Q $SRC -l -G $FILE_REGEX`
+  if $REMOVE; then
+    SED_CMD=\\${SEP}$SRC${SEP}d
+  else
+    SED_CMD=s${SEP}$SRC${SEP}$DST${SEP}g
+  fi
   if [[ "$(uname)" == "Darwin" ]]; then
-    echo $MATCHED_FILES | xargs sed -i '' "s$SEP$SRC$SEP$DST${SEP}g"
+    echo $MATCHED_FILES | xargs sed -i '' "${SED_CMD}"
   elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-    echo $MATCHED_FILES | xargs sed -i s${SEP}$SRC${SEP}$DST${SEP}g
+    echo $MATCHED_FILES | xargs sed -i ${SED_CMD}
   fi
 }
 function git-change-module-remote() {
