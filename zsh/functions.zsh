@@ -107,6 +107,7 @@ function Replace () {
       -s            Source pattern
       -d            Destination pattern
       -r            Remove line
+      --regex       Match pattern with regex
       --seperator=  Seperator, # by default
       -h            Display this message"
   }
@@ -116,6 +117,7 @@ function Replace () {
   SEP=";"
   DEBUG=false
   REMOVE=false
+  REGEX=false
   while getopts ":rhf:s:d:-:" opt
     do
       case "${opt}" in
@@ -124,6 +126,9 @@ function Replace () {
         case "${OPTARG}" in
           debug)
             DEBUG=true
+            ;;
+          regex)
+            REGEX=true
             ;;
           seperator=*)
             val=${OPTARG#*=}
@@ -142,8 +147,9 @@ function Replace () {
          usage; return 1    ;;
     esac
   done
-  shift $(($OPTIND-1))
-  MATCHED_FILES=`ag -Q $SRC -l -G $FILE_REGEX`
+  SEARCH_CMD="ag `$REGEX || echo -Q` \"$SRC\" -l -G \"$FILE_REGEX\""
+  MATCHED_FILES=`eval "$SEARCH_CMD"`
+  echo "Replace in current files:$fg[green]\n$MATCHED_FILES$reset_color"
   if $REMOVE; then
     SED_CMD=\\${SEP}$SRC${SEP}d
   else
