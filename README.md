@@ -2,8 +2,8 @@
 
 Forked from https://github.com/skwp/dotfiles
 
-## Get started
-### Requirements
+# Get started
+## Requirements
 * `zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
 ```sh
 chsh -s $(which zsh)
@@ -13,7 +13,7 @@ chsh -s $(which zsh)
 python3 -m pip install --user --upgrade pynvim
 ```
 
-### Install
+## Install
 
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
@@ -23,26 +23,19 @@ Or
 bash -c "`curl -fsSL https://git.ruilisi.com/ruilisi/dotfiles/raw/branch/master/install.sh`"
 ```
 
-### Upgrade
+## Upgrade
 ```sh
 cd ~/.yadr
 git pull --rebase
 rake update
 ```
 
+# Modules
 ## ZSH
-- [Prezto - the zsh behind YADR's](http://github.com/sorin-ionescu/prezto)
-- [How to add your own ZSH theme](doc/zsh/themes.md)
-### Shortcuts
+* [Prezto - the zsh behind YADR's](http://github.com/sorin-ionescu/prezto)
+* [How to add your own ZSH theme](doc/zsh/themes.md)
 
-Shortcut    | Alias
-:-----------|:--------
-Ctrl-R      | Vim mode and bash style historical anti-query
-ae          | Edit alias
-ar          | Reload alias
-ESC C-x C-e |Edit current command line in vim
-
-### Commands
+#### General Commands
 - `Replace`
   - `Replace s SOURCE_TEXT -d DESTINATION_TEXT -f FILE_REGEX_PATTERH --separator=SEPERATOR`
   - By default, `FILE_REGEX_PATTERN` is `.*`, SEPERATOR` is `;`
@@ -66,7 +59,46 @@ ESC C-x C-e |Edit current command line in vim
 - `git_tag_add` -add gtihub tag
 - `dc` -alias of docker-compose
 
-### [fasd](https://github.com/clvv/fasd)
+#### Editing Commands
+Shortcut    | Alias
+:-----------|:--------
+Ctrl-R      | Vim mode and bash style historical anti-query
+ae          | Edit alias
+ar          | Reload alias
+ESC C-x C-e |Edit current command line in vim
+
+
+#### Git Commands
+YADR will take over your ~/.gitconfig, so if you want to store your git username and other settings, please put them in ~/.gitconfig.user
+
+We recommend setting your user information in this file. In addition, you can set your environment variables appropriately in your ~/.secrets.
+
+Command  | Alias
+:--------|:--------
+`ga`     |`git add`
+`gb`     |`git branch`
+`gbc` or `gnb`    |`git checkout -b`
+`gbs`    |`git show-branch`
+`gc`     |`git commit --verbose`
+`gco`    |`git checkout`
+`gcp`    |`git cherry-pick --ff`
+`gd`     |`git diff`
+`gf`     |`git fetch`
+`gfc`    |`git clone`
+`gfm`    |`git pull`
+`gfr`    |`git pull --rebase`
+`gl`     |`git log`
+`gpc`    |`git push --set-upstream origin "$(git-branch-current 2> /dev/null)"`
+`gr`     |`git rebase`
+`gra`    |`git rebase --abort`
+`grc`    |`git rebase --continue`
+`grs`    |`git rebase --skip`
+`gsd`    |`git stash drop`
+`gsl`    |`git stash list`
+`gsp`    |`git stash pop`
+`gst`    |`git stash`
+
+## [fasd](https://github.com/clvv/fasd)
 The name fasd comes from the default suggested aliases f(files), a(files/directories), s(show/search/select), d(directories).
 
 Some situations where you can type in the command on the left and fasd will "expand" your command into the right side.
@@ -99,42 +131,11 @@ mv update.html `d www`
 cp `f mov` .
 ```
 
-### Git customization:
-
-YADR will take over your ~/.gitconfig, so if you want to store your git username and other settings, please put them in ~/.gitconfig.user
-
-We recommend setting your user information in this file. In addition, you can set your environment variables appropriately in your ~/.secrets.
-
-Shortcut | Alias
-:--------|:--------
-`ga`     |`git add`
-`gb`     |`git branch`
-`gbc` or `gnb`    |`git checkout -b`
-`gbs`    |`git show-branch`
-`gc`     |`git commit --verbose`
-`gco`    |`git checkout`
-`gcp`    |`git cherry-pick --ff`
-`gd`     |`git diff`
-`gf`     |`git fetch`
-`gfc`    |`git clone`
-`gfm`    |`git pull`
-`gfr`    |`git pull --rebase`
-`gl`     |`git log`
-`gpc`    |`git push --set-upstream origin "$(git-branch-current 2> /dev/null)"`
-`gr`     |`git rebase`
-`gra`    |`git rebase --abort`
-`grc`    |`git rebase --continue`
-`grs`    |`git rebase --skip`
-`gsd`    |`git stash drop`
-`gsl`    |`git stash list`
-`gsp`    |`git stash pop`
-`gst`    |`git stash`
-
 ## Tmux
-### Settings
+#### Settings
 
 `tmux.conf` provides some reasonable default settings for tmux on Mac OS, such as a powerful status bar and VIM keyboard bindings. You can modify the configuration in `~/.tmux.conf.user`.
-### Shortcuts
+#### Shortcuts
 Prefix is defined as `C-a`(`PRE` for short)
 Shortcut  | Function
 :---------|:--------
@@ -164,10 +165,10 @@ Shortcut | Function |
 
 **Defined by Us**
 
-### Vim Basic
-Refer [here](doc/vim-basic.md)
+#### Basic
+[Here](doc/vim-basic.md)
 
-### Shortcuts
+#### Shortcuts
 **General**
 Shortcut | Function
 :-------:|:--------:
@@ -186,12 +187,13 @@ SPC l t  | Type
 SPC l e  | Rename
 SPC l d  | Doc
 g d      | Go to definition
+SPC e L  | List checkers
 
-### markdown
+#### markdown
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
 * Open vim and enter command: `:SPUPdate`
 
-### Option window, window, split bar
+#### Option window, window, split bar
 - `Ctrl-h,l,j,k` - use to move to left、right、top、bottom commpartment. This is still valid when vim and the split bar are together, thanks to `vim-tmux-navigator`。
 - `Q` - Enter Ex mode
 - `vv` - Vertical separation (`Ctrl-w,v`)
@@ -253,6 +255,16 @@ When multiple files are opened, the files will be listed in the tab bar in the f
 - `\8` - Open tag 8
 - `\9` - Open tag 9
 
+#### History
+Shortcut | Function
+:--------|:--------
+`F7`     | Undo history
+
+
+#### Debug
+Shortcut    | Function
+:-----------|:--------
+SPC h I     | Show Debug Info
 
 
 
