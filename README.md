@@ -209,8 +209,12 @@ SPC e L  | List checkers
   * Resolution steps
     * Delete cache   rm -rf ~/.cache/vimfiles/.cache
     * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
-    * Reopen vim and run `:UpdateRemotePlugins`
+    * Install pip for `python3` if not: `curl https://bootstrap.pypa.io/get-pip.py | python3`
+    * `pip install neovim`
+    * `npm install -g neovim`
+    * Run `:UpdateRemotePlugins` in vim and reopen vim
     * If it still doesn't work, add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
+    * If nvim-typescript still does not work, go to `~/.cache/vimfiles/repos` and do `npm config set registry=https://registry.npmjs.com/`, then `./install.sh`
 
 #### Rails & Ruby
 - `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
