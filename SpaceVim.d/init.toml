@@ -94,3 +94,6 @@ name = "lang#swift"
 [[layers]]
 name = "format"
 format_on_save = true
+
+[[layers]]
+name = "lang#python"
