@@ -202,7 +202,7 @@ SPC e L  | List checkers
 - `,qc` - close quickfix
 
 #### Typescript
-* fix `SpaceVim Unknown function: TSOnBufEnter`
+* Fix `SpaceVim Unknown function: TSOnBufEnter`
   * References
     * https://github.com/SpaceVim/SpaceVim/issues/1800
     * https://github.com/SpaceVim/SpaceVim/issues/3221
@@ -213,8 +213,17 @@ SPC e L  | List checkers
     * `pip install neovim`
     * `npm install -g neovim`
     * Run `:UpdateRemotePlugins` in vim and reopen vim
-    * If it still doesn't work, add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
-    * If nvim-typescript still does not work, go to `~/.cache/vimfiles/repos` and do `npm config set registry=https://registry.npmjs.com/`, then `./install.sh`
+* If plugin `nvim-typescript` is not installed successfully(`vim` -> `:SPUpdate`), try following steps one by one until succeeded:
+  1. Add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
+  2. Install it manually:
+  ```bash
+  cd ~/.cache/vimfiles/repos/github.com/mhartington/
+  rm -rf nvim-typescript
+  git clone https://github.com/mhartington/nvim-typescript
+  cd nvim-typescript
+  npm config set registry=https://registry.npmjs.com/
+  ./install.sh
+  ```
 
 #### Rails & Ruby
 - `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
