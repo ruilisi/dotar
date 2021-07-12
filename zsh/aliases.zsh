@@ -249,13 +249,16 @@ alias ls_folder_size="du -sch .[!.]* * | sort -h"
 alias top_by_memory="top -o %MEM"
 alias gcaa="gia .; gcF"
 alias ror_ctags="ctags -R --languages=ruby --exclude=.git --exclude=log . \$(bundle list --paths)"
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias find_large_files="sudo find / -xdev -type f -size +50M"
 alias vim_plain="vim -u NONE"
 alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
-alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"
 alias vim="nvim"
+
+## docker
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
+alias docker_restart_in_mac='killall Docker && open /Applications/Docker.app'
 
 ## source files
 alias ss="source ~/.zshrc"
