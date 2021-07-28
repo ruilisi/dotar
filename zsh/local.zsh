@@ -13,11 +13,6 @@ export PATH=$PATH:$HOME/Android/sdk/platform-tools:$HOME/Android/sdk/tools/
 #### Qiniu
 QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
 
-#### nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use $NVM_VERSION
-export PATH="$PATH:$HOME/.nvm/versions/node/$NVM_VERSION/bin"
-
 #### Java
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 if [ "$(uname)" = "Darwin" ]; then
