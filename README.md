@@ -20,7 +20,7 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/i
 ```
 Or
 ```sh
-bash -c "`curl -fsSL https://git.ruilisi.com/ruilisi/dotfiles/raw/branch/master/install.sh`"
+bash -c "`curl -fsSL https://xiemala.com/ruilisi/dotfiles/raw/branch/master/install.sh`"
 ```
 
 ## Upgrade
@@ -211,7 +211,7 @@ SPC e L  | List checkers
     * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
     * Install pip for `python3` if not: `curl https://bootstrap.pypa.io/get-pip.py | python3`
     * `pip install neovim`
-    * `npm install -g neovim`
+    * `npm install -g neovim typescript`
     * Run `:UpdateRemotePlugins` in vim and reopen vim
 * If plugin `nvim-typescript` is not installed successfully(`vim` -> `:SPUpdate`), try following steps one by one until succeeded:
   1. Add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
@@ -258,15 +258,7 @@ The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view t
 #### Switch Tab:
 When multiple files are opened, the files will be listed in the tab bar in the form of Tabs, and you can switch to the Tab with the corresponding serial number via `\[1-9]`.
 
-- `\1` - Open tag 1
-- `\2` - Open tag 2
-- `\3` - Open tag 3
-- `\4` - Open tag 4
-- `\5` - Open tag 5
-- `\6` - Open tag 6
-- `\7` - Open tag 7
-- `\8` - Open tag 8
-- `\9` - Open tag 9
+- `\[1-9]` - Open tag 1-9
 
 #### History
 Shortcut | Function
@@ -278,8 +270,6 @@ Shortcut | Function
 Shortcut    | Function
 :-----------|:--------
 SPC h I     | Show Debug Info
-
-
 
 ## iTerm
 
