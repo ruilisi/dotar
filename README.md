@@ -149,6 +149,15 @@ PRE ,     |Switch to Tmux command line mode
 PRE d     |Exit Session
 PRE D     |Exit Session
 PRE 1     |Enter pane 1
+PRE >/<   |Cheatsheet
+PRE {/}   |Move pane to previous/next position
+PRE C-o   |rotate window ‘up’ (i.e. move all panes)
+PRE M-o   |rotate window ‘down’
+PRE z     |Zoom/Unzoom
+PRE m     |Mark
+PRE !     |Move the current pane into a new separate
+PRE o     |Go to the next pane (cycle through all of them)
+PRE ;     |Go to the ‘last’ (previously used) pane
 > `C` is short for `Ctrl`
 
 Press `PRE [` to enter Scroll Mode
