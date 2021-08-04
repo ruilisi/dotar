@@ -189,16 +189,43 @@ SPC g .  | Enter version control transient-state
 SPC l p  | Preview markdown
 
 **Typescript**
+
 Shortcut | Function
 :-------:|:--------:
 SPC l p  | Definitaion Preview
-SPC l t  | Type
+SPC l t   | Type
 SPC l e  | Rename
 SPC l d  | Doc
-g d      | Go to definition
-SPC e L  | List checkers
+g d         | Go to definition
+SPC e L | List checkers
+
+**Tab**
+Shortcut | Function
+:--------:|:--------:
+\\[1-9]     | Open tab 1-9
+SPC t t    | Open tab management window
+SPC w F  | Open a new tab
+SPC w o  | Switch tab
+
+**History**
+Shortcut | Function
+:--------:|:--------:
+`F7`     | Undo history
+
+
+**Debug**
+Shortcut    | Function
+:-----------:|:--------:
+SPC h I     | Show Debug Info
+
+**Git**
+Shortcut | Function
+:-------:|:--------:
+<leader> b  | Togggle git blame info at the end of current line
+<SPC> gb    | Open git blame window
 
 #### markdown
+
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
 * Open vim and enter command: `:SPUPdate`
 
@@ -263,22 +290,6 @@ The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view t
 - `SPC p /` - fuzzy search for text in current project
 - `SPC c l` - toggle comment lines
 - `SPC c p` - toggle comment paragraphs
-
-#### Switch Tab:
-When multiple files are opened, the files will be listed in the tab bar in the form of Tabs, and you can switch to the Tab with the corresponding serial number via `\[1-9]`.
-
-- `\[1-9]` - Open tag 1-9
-
-#### History
-Shortcut | Function
-:--------|:--------
-`F7`     | Undo history
-
-
-#### Debug
-Shortcut    | Function
-:-----------|:--------
-SPC h I     | Show Debug Info
 
 ## iTerm
 

@@ -318,3 +318,6 @@ nnoremap <localleader>tp :call TogglePaste()<cr>
 nnoremap ,tt :call ToggleRspecTest()<cr>
 
 vmap <localleader>js :!python -m json.tool<cr>
+
+" nvim-blame-line
+nnoremap <silent> <leader>b :ToggleBlameLine<CR>
