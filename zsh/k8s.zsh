@@ -1,7 +1,6 @@
 NAMESPACE=default
 RUNNING_POD=""
 LEFT_ARGS=""
-KCONTEXT=""
 VERBOSE=false
 SRC=""
 DST=""
@@ -189,4 +188,28 @@ function set_k8s_context_core {
     read C
   fi
   export KCONTEXT=$C
+}
+
+function helm() {
+  DEBUG=false
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      --context=*)
+        KCONTEXT="${i#*=}"
+        shift
+        ;;
+      --debug)
+        DEBUG=true
+        finalopts+=($1)
+        shift
+        ;;
+      *)
+        finalopts+=($1)
+        shift
+        ;;
+    esac
+  done
+  [[ $DEBUG == "true" ]] && echo "helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
+  command helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
