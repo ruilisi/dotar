@@ -66,7 +66,7 @@ end
 
 desc "install spacevim and related config files"
 task :install_spacevim do
-  run 'curl -sLf https://spacevim.org/install.sh | sed "s;github.com/SpaceVim;xiemala.com/ruilisi;" | bash'
+  run 'curl -sLf https://spacevim.org/install.sh | sed "s;github.com/SpaceVim;yuancode.ruilisi.com/ruilisi;" | bash'
   install_files(Dir.glob("SpaceVim*"))
 end
 
@@ -74,7 +74,7 @@ desc "Update spacevim"
 task :update_spacevim do
   run %(
     cd ~/.SpaceVim
-    git remote set-url origin https://xiemala.com/ruilisi/SpaceVim.git
+    git remote set-url origin https://yuancode.ruilisi.com/ruilisi/SpaceVim.git
     git pull --rebase
   )
 end
