@@ -343,6 +343,7 @@ function gc {
   (git commit --verbose $*) || return
   (git commit --amend --author="$name <$emails[$index]>") || return
 }
+
 function gcm {
   (gc --message $*) || return
 }
@@ -351,7 +352,13 @@ function random_hex {
   openssl rand -hex $(expr $1 / 2)
 }
 
-function random-string()
-{
+function random-string {
     cat /dev/urandom |  LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
+}
+
+function list-large-files {
+  LIST=`du $1`
+  echo $LIST | grep '\dK.' | sort -n
+  echo $LIST | grep '\dM.' | sort -n
+  echo $LIST | grep '\dG.' | sort -n
 }
