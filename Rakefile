@@ -40,6 +40,7 @@ task install: %i[submodule_init submodules] do
   Rake::Task['install_tools'].execute
   Rake::Task['install_prezto'].execute
   Rake::Task['install_spacevim'].execute
+  Rake::Task['install_asdf'].execute
 
   install_fonts
 
@@ -66,6 +67,17 @@ task :update_spacevim do
     cd ~/.SpaceVim
     git remote set-url origin https://yuancode.ruilisi.com/ruilisi/SpaceVim.git
     git pull --rebase
+  )
+end
+
+desc 'install asdf'
+task :install_asdf do
+  run 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1'
+  install_files(Dir.glob('asdf/*')) if want_to_install?('tool version manager asdf')
+  run %(
+    . $HOME/.asdf/asdf.sh
+    asdf plugin-add kubetail https://github.com/janpieper/asdf-kubetail.git
+    asdf install
   )
 end
 
