@@ -101,3 +101,6 @@ name = "lang#python"
 [[custom_plugins]]
 repo = "https://github.com/tveskag/nvim-blame-line.git"
 merged = false
+
+[[custom_plugins]]
+repo = "https://github.com/zivyangll/git-blame.vim"

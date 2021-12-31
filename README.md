@@ -218,10 +218,11 @@ Shortcut    | Function
 :-----------:|:--------:
 SPC h I     | Show Debug Info
 
-**Git**
+**Git Blame**
 Shortcut | Function
 :-------:|:--------:
 <leader> b  | Togggle git blame info at the end of current line
+<leader> s  | See Git Blame information in the status bar for the currently selected line.
 <SPC> gb    | Open git blame window
 
 #### markdown
