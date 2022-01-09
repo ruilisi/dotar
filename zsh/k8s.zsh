@@ -117,8 +117,8 @@ function klogs {
         KCONTEXT="${i#*=}"
         shift
         ;;
-      -p)
-        PROJECT="$2"
+      -d)
+        DEPLOYMENT="$2"
         shift; shift
         ;;
       -i)
@@ -132,8 +132,8 @@ function klogs {
     esac
   done
 
-  if [[ "$PROJECT" != "" ]]; then
-    kubectl logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
+  if [[ "$DEPLOYMENT" != "" ]]; then
+    kubectl logs -f deployment/$DEPLOYMENT --all-containers=true --since=24h --pod-running-timeout=2s $finalopts
   elif  [[ "$INSTANCE" != "" ]]; then
     while true; do
       kubectl logs -f --max-log-requests=10 -l app.kubernetes.io/instance=$INSTANCE 1>&0
