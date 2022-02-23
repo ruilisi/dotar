@@ -316,32 +316,19 @@ unalias gc 2>/dev/null
 unalias gcm 2>/dev/null
 function gc {
   while true;do
-    users=($GIT_USERS)
-    for ((i=1; i<=${#users[@]}; i++)) do
-      echo "$i | $users[$i]"
+    for user email in ${(kv)GIT_USERS}; do
+      printf "%-20s" $user
+      echo $email
     done
-    echo 'please input your number or name:'
-    read input
-    for ((i=1; i<=${#users[@]}; i++)) do
-      if [[ $input == $users[$i] ]];then
-        name=$input
-        index=$i
-        break 2
-      elif [[ "$input" =~ '^[0-9]+$' ]];then
-        if [[ $input -gt 0 && $input -le ${#users[@]} ]];then
-          name=$users[$input]
-          index=$input
-          break 2
-        fi
-      fi
-    done
-    echo 'invalid option...'
+    echo $fg[green]'Please input github username listed above(let admin add if not existed):'$reset_color
+    read user
+    email=$GIT_USERS[$user]
+    if [[ "$email" != "" ]]; then
+      break
+    fi
+    echo $fg[red]'Invalid option...'$reset_color
   done
-  emails=($GIT_EMAILS)
-  git config user.name $name
-  git config user.email $emails[$index]
-  (git commit --verbose $*) || return
-  (git commit --amend --author="$name <$emails[$index]>") || return
+  (git commit --author="$user <$email>" --verbose $*) || return
 }
 
 function gcm {
