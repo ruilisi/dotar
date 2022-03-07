@@ -6,6 +6,7 @@ function! paiyou#before() abort
         \ 'stdin': 1
         \ }
   let g:neoformat_enabled_typescriptreact = ['tsfmt', 'prettier']
+  let g:neoformat_enabled_ruby = ['rubocop']
 endfunction
 
 function! paiyou#after() abort
