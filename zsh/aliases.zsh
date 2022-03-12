@@ -219,9 +219,6 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 # rails
 alias rails_setup='rails db:reset; rails db:seed RAILS_ENV=test'
 alias rails_test='rspec && rubocop'
-alias rubocop='rubocop --require rubocop-performance --format progress'
-alias psetup='rake parallel:setup'
-alias prspec='rake parallel:spec'
 
 alias start_dropbox='~/.dropbox-dist/dropboxd'
 alias unzip_CN="unzip -O GB18030"

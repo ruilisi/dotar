@@ -34,7 +34,9 @@
     enable_ale = true
     bootstrap_before = "paiyou#before"
     bootstrap_after = "paiyou#after"
-    project_rooter_automatically = 0
+    project_auto_root = true
+    project_rooter_outermost = false
+    project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '!packages/']
 
 # Enable autocomplete layer
 [[layers]]
