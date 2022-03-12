@@ -18,3 +18,4 @@ tags
 .idea
 git/gitconfig
 .DS_Store
+node_modules
