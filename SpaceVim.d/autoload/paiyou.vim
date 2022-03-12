@@ -34,3 +34,5 @@ for fpath in split(globpath(vimsettings, '*.vim'), '\n')
 
   exe 'source' fpath
 endfor
+let g:smoothie_enabled = 0
+let ruby_no_expensive=1
