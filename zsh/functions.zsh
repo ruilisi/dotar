@@ -95,6 +95,7 @@ function strip_color() {
 function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
+alias ag="ag --hidden"
 # Replace replaces non-regex pattern recursively
 # Example: Replace 'ctx.Status(400)' "ctx.Status(http.StatusBadRequest)"
 function Replace () {
