@@ -41,6 +41,7 @@ task install: %i[submodule_init submodules] do
   Rake::Task['install_prezto'].execute
   Rake::Task['install_spacevim'].execute
   Rake::Task['install_asdf'].execute
+  Rake::Task['install_node_modules'].execute
 
   install_fonts
 
@@ -285,6 +286,10 @@ def ask(message, values)
   end
   selection = selection.to_i - 1
   values[selection]
+end
+
+def install_node_modules
+  run('command -v yarn && yarn')
 end
 
 def install_prezto
