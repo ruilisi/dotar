@@ -346,7 +346,7 @@ function random-string {
 
 function list-large-files {
   LIST=`du $1`
-  echo $LIST | grep '\dK.' | sort -n
-  echo $LIST | grep '\dM.' | sort -n
-  echo $LIST | grep '\dG.' | sort -n
+  echo $LIST | grep '^[0-9.]*K.' | sort -n
+  echo $LIST | grep '^[0-9.]*M.' | sort -n
+  echo $LIST | grep '^[0-9.]*G.' | sort -n
 }
