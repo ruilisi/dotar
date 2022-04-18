@@ -238,30 +238,6 @@ Shortcut | Function
 - `,qo` - Open quickfix window (The output of grep will go to this window)
 - `,qc` - close quickfix
 
-#### Typescript
-* Fix `SpaceVim Unknown function: TSOnBufEnter`
-  * References
-    * https://github.com/SpaceVim/SpaceVim/issues/1800
-    * https://github.com/SpaceVim/SpaceVim/issues/3221
-  * Resolution steps
-    * Delete cache   rm -rf ~/.cache/vimfiles/.cache
-    * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
-    * Install pip for `python3` if not: `curl https://bootstrap.pypa.io/get-pip.py | python3`
-    * `pip install neovim`
-    * `npm install -g neovim typescript`
-    * Run `:UpdateRemotePlugins` in vim and reopen vim
-* If plugin `nvim-typescript` is not installed successfully(`vim` -> `:SPUpdate`), try following steps one by one until succeeded:
-  1. Add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
-  2. Install it manually:
-  ```bash
-  cd ~/.cache/vimfiles/repos/github.com/mhartington/
-  rm -rf nvim-typescript
-  git clone https://github.com/mhartington/nvim-typescript
-  cd nvim-typescript
-  npm config set registry=https://registry.npmjs.com/
-  ./install.sh
-  ```
-
 #### Rails & Ruby
 - `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
 - `,rs` & `,rl` to run rspec or a spec line in iTerm (check the iTerm window for information).
@@ -305,3 +281,6 @@ YADR will install the Solarized color scheme into iTerm. You can choose Solarize
 Homebrew is a missing OSX package management system, and it will be installed automatically.
 
 We automatically installed some commonly used packages, such as ctags, git, macvim, hub, and RipGrep (‘rg’). Note that our auto-completion plugin requires MacVim to support Lua. The installer knows how to install it, but if you have installed it before, you need to manually delete your previous MacVim.
+
+## Frequently Asked Questions
+[Check FAQ](./FAQ.md)
