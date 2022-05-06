@@ -5,18 +5,6 @@ function secure_source () {
     source $1
   fi
 }
-function contains() {
-  local n=$#
-  local value=${!n}
-  for ((i=1;i < $#;i++)) {
-    if [ "${!i}" == "${value}" ]; then
-      echo "y"
-      return 0
-    fi
-  }
-  echo "n"
-  return 1
-}
 pp() { ps aux | grep "$1\|USER" | grep -v "grep" }
 function getIP () {
   echo $(grep $1 ~/.ssh/config -A 1 | tail -1 | tr -s ' ' | cut -d ' ' -f 3)
@@ -30,50 +18,12 @@ function ssh_exec_by_file () {
   ssh -t $1 "bash -s" -- < $2
 }
 
-function cp_container() {
-  sourceName=$1
-  targetName=$2
-  cp $sourceName $targetName -r
-  cd $targetName
-  mv ${sourceName}.scss ${targetName}.scss
-  mv ${sourceName}.js ${targetName}.js
-  cd ..
-}
-function set_proxy() {
-  export http_proxy=http://127.0.0.1:8668;export https_proxy=http://127.0.0.1:8668;
-}
-function set_vagrant_proxy() {
-  export http_proxy=http://127.0.0.1:9119;export https_proxy=http://127.0.0.1:9119;
-}
-function set_ss_proxy() {
-  export https_proxy=socks5://127.0.0.1:1080/
-  export http_proxy=socks5://127.0.0.1:1080/
-}
-function unset_proxy() {
-  unset all_proxy
-  unset http_proxy
-  unset https_proxy
-}
 function post {
   curl -H "Content-Type: application/json" -X POST -d $1 $2
-}
-function git-set-remote {
-  git remote rm origin
-  git remote rm upstream
-  git remote add origin $1
-  git remote add upstream $1
 }
 function search_installed_packages {
   dpkg --get-selections | grep $1
 }
-function delete_packages {
-  sudo apt remove `_search_installed_packages $1 | cut -f 1 | tr "\n" " "`
-}
-function gem_source_to_taobao {
-  gem source -r https://rubygems.org/
-  gem source -a https://ruby.taobao.org
-}
-
 function set_anonymous {
   git filter-branch --env-filter '
   if [ "$GIT_AUTHOR_NAME" = "ralletstellar" ]; then \
@@ -95,94 +45,14 @@ function strip_color() {
 function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
-# Replace replaces non-regex pattern recursively
-# Example: Replace 'ctx.Status(400)' "ctx.Status(http.StatusBadRequest)"
-function Replace () {
-  CMD=$0
-  function usage ()
-  {
-    echo "Usage :  $CMD [options] [--]
-      Options:
-      -f            File regex pattern
-      -s            Source pattern
-      -d            Destination pattern
-      -r            Remove line
-      --regex       Match pattern with regex
-      --seperator=  Seperator, # by default
-      -h            Display this message"
-  }
-  FILE_REGEX='.*'
-  SRC=""
-  DST=""
-  SEP=";"
-  DEBUG=false
-  REMOVE=false
-  REGEX=false
-  while getopts ":rhf:s:d:-:" opt
-    do
-      case "${opt}" in
-        -)
-        echo $OPTART
-        case "${OPTARG}" in
-          debug)
-            DEBUG=true
-            ;;
-          regex)
-            REGEX=true
-            ;;
-          seperator=*)
-            val=${OPTARG#*=}
-            SEP=$val
-            ;;
-          *)
-            echo "Unknown option --${OPTARG}"
-            ;;
-        esac;;
-      f) FILE_REGEX=$OPTARG ;;
-      r) REMOVE=true        ;;
-      s) SRC=$OPTARG        ;;
-      d) DST=$OPTARG        ;;
-      h) usage; return 0    ;;
-      *) echo -e "\n  option does not exist : $OPTARG\n";
-         usage; return 1    ;;
-    esac
-  done
-  SEARCH_CMD="ag `$REGEX || echo -Q` \"$SRC\" -l -G \"$FILE_REGEX\""
-  MATCHED_FILES=`eval "$SEARCH_CMD"`
-  echo "Replace in current files:$fg[green]\n$MATCHED_FILES$reset_color"
-  if $REMOVE; then
-    SED_CMD=\\${SEP}$SRC${SEP}d
-  else
-    SED_CMD=s${SEP}$SRC${SEP}$DST${SEP}g
-  fi
-  if [[ "$(uname)" == "Darwin" ]]; then
-    echo "xargs sed -i '' \"${SED_CMD}\""
-    echo $MATCHED_FILES | xargs sed -i '' "${SED_CMD}"
-  elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-    echo $MATCHED_FILES | xargs sed -i ${SED_CMD}
-  fi
-}
 function git-change-module-remote() {
   git config --file=.gitmodules submodule.$1.url $2
   git config --file=.gitmodules submodule.$1.branch $3
   git submodule sync
   git submodule update --init --recursive --remote
 }
-function replace() {
-  ag -l -G $1 | xargs sed -ri.bak -e "s/$2/$3/g"
-}
 function markdown-preview() {
   cat $1 | instant-markdown-d > /dev/null 2>&1
-}
-function swap() {
-  if [ $# -ne 2 ]; then
-    echo "Usage: swap file1 file2"
-  else
-    local TMPFILE=$(mktemp)
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
-  fi
 }
 function cmd_exists() {
   $* &> /dev/null

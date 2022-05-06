@@ -21,10 +21,6 @@ python3 -m pip install --user --upgrade pynvim
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotar/master/install.sh`"
 ```
-Or
-```sh
-bash -c "`curl -fsSL https://xiemala.com/ruilisi/dotar/raw/branch/master/install.sh`"
-```
 
 ## Upgrade
 ```sh
@@ -34,35 +30,34 @@ rake update
 ```
 
 # Modules
-## ZSH
-* [Prezto - the zsh behind YADR's](http://github.com/sorin-ionescu/prezto)
-* [How to add your own ZSH theme](doc/zsh/themes.md)
+* ZSH
+  * [Prezto - the zsh behind YADR's](http://github.com/sorin-ionescu/prezto)
+  * [How to add your own ZSH theme](doc/zsh/themes.md)
 
-#### General Commands
-- `Replace`
-  - `Replace s SOURCE_TEXT -d DESTINATION_TEXT -f FILE_REGEX_PATTERH --separator=SEPERATOR`
-  - By default, `FILE_REGEX_PATTERN` is `.*`, SEPERATOR` is `;`
-  - Example: `Replace -s "/api/rule" -d "/dashboard/api/rule" -f ".*.ts"`
-- `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
-- `pp $1` -useage:`pp xx`, grep process by name
-- `set_proxy` -set terminal proxy use http proxy
-- `set_vagrant_proxy` -set terminal proxy use vagrant http proxy
-- `set_ss_proxy` -set terminal proxy use socks proxy
-- `unset_proxy` -cancel all proxy
-- `post $1 $2` -curl POST with application/json
-- `git-set-remote $1` -set project git remote url
-- `gem_source_to_taobao` -set ruby gem source to taobao
-- `docker_rm_all` -delete all docker images
-- `Replace $1 $2` -replcae all text under current path
-- `swap $1 $2` -`swap file1 file2`
-- `init_db` -init rails project database
-- `kexec` -execute k8s pod by regex pod name
-- `klog` -show k8s pod log by regex pod name
-- `git_tag_delete` -delete gtihub tag
-- `git_tag_add` -add gtihub tag
-- `dc` -alias of docker-compose
+## Zsh Commands
+#### [Files](./zsh/files.zsh)
+Command  | Args  | Description
+:--------|:------|:-----------
+swap     | F1 F2 | swap file F1 with file F2
+Replace  |[doc](#Replace)      |Replace text recursively
 
-#### Editing Commands
+
+<a name="Replace">
+Replace
+</a>options:
+
+```sh
+  -f            File regex pattern
+  -s            Source pattern
+  -d            Destination pattern
+  -r            Remove line
+  --regex       Match pattern with regex
+  --seperator=  Seperator, # by default
+  -h            Display this message"
+```
+
+
+#### Editing
 Shortcut    | Alias
 :-----------|:--------
 Ctrl-R      | Vim mode and bash style historical anti-query
@@ -70,14 +65,14 @@ ae          | Edit alias
 ar          | Reload alias
 ESC C-x C-e |Edit current command line in vim
 
-#### Network tools
+#### Network
 Command     | Description
 :-----------|:--------
 test-port PORT          | test whether PORT is opened
 intercept-request-hosts | intercept requests and show hosts
 host-ip                 | show host ip of your system
 
-#### System commands
+#### System
 Command     | Description
 :-----------|:--------
 yell        | print the script name and all arguments to stderr
@@ -85,13 +80,14 @@ die         | does the same as yell, but exits with a non-0 exit status, which m
 try         | uses the || (boolean OR), which only evaluates the right side if the left one didn’t fail.
 list-large-files DIR | list large files sort by reversed order of size and print size in the order of `KB`, `MB`, `GB`
 
-#### String commands
+#### String
 Command      | Description
 :------------|:--------
 random-hex   | print random hex
 random-string| print random string of alphabets `a-zA-Z0-9`
+contains     |str1 str2 ... target |test whether a target string is included in an array of strings
 
-#### Git Commands
+#### Git
 YADR will take over your ~/.gitconfig, so if you want to store your git username and other settings, please put them in ~/.gitconfig.user
 
 We recommend setting your user information in this file. In addition, you can set your environment variables appropriately in your ~/.secrets.
@@ -120,6 +116,21 @@ Command  | Alias
 `gsl`    |`git stash list`
 `gsp`    |`git stash pop`
 `gst`    |`git stash`
+
+#### Other
+- `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
+- `pp $1` -useage:`pp xx`, grep process by name
+- `set_proxy` -set terminal proxy use http proxy
+- `set_vagrant_proxy` -set terminal proxy use vagrant http proxy
+- `set_ss_proxy` -set terminal proxy use socks proxy
+- `unset_proxy` -cancel all proxy
+- `post $1 $2` -curl POST with application/json
+- `docker_rm_all` -delete all docker images
+- `kexec` -execute k8s pod by regex pod name
+- `klog` -show k8s pod log by regex pod name
+- `git_tag_delete` -delete gtihub tag
+- `git_tag_add` -add gtihub tag
+- `dc` -alias of docker-compose
 
 ## [fasd](https://github.com/clvv/fasd)
 The name fasd comes from the default suggested aliases f(files), a(files/directories), s(show/search/select), d(directories).
