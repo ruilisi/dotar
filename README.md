@@ -1,7 +1,11 @@
-# Ruilisi dotfiles
+<p align="center">
+  <img align="center" src="logo.png" width="150px" height="150px" />
+</p>
+<h1 align="center">Dotar</h1>
+<p align="center">Dotar is an all-in-one dev configuration for your mac/linux which includes setup for zsh, spacevim(nvim), tmux and many more</p>
 
-Forked from https://github.com/skwp/dotfiles
-
+# The story
+Dotar got its name by the combination of `dot` and `tar` which means package(`tar`) dotfiles togeter.
 # Get started
 ## Requirements
 * `zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
@@ -16,11 +20,11 @@ python3 -m pip install --user --upgrade pynvim
 ## Install
 
 ```sh
-bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
+bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotar/master/install.sh`"
 ```
 Or
 ```sh
-bash -c "`curl -fsSL https://xiemala.com/ruilisi/dotfiles/raw/branch/master/install.sh`"
+bash -c "`curl -fsSL https://xiemala.com/ruilisi/dotar/raw/branch/master/install.sh`"
 ```
 
 ## Upgrade
@@ -67,6 +71,26 @@ ae          | Edit alias
 ar          | Reload alias
 ESC C-x C-e |Edit current command line in vim
 
+#### Network tools
+Command     | Description
+:-----------|:--------
+test-port PORT          | test whether PORT is opened
+intercept-request-hosts | intercept requests and show hosts
+host-ip                 | show host ip of your system
+
+#### System commands
+Command     | Description
+:-----------|:--------
+yell        | print the script name and all arguments to stderr
+die         | does the same as yell, but exits with a non-0 exit status, which means "fail".
+try         | uses the || (boolean OR), which only evaluates the right side if the left one didn’t fail.
+list-large-files DIR | list large files sort by reversed order of size and print size in the order of `KB`, `MB`, `GB`
+
+#### String commands
+Command      | Description
+:------------|:--------
+random-hex   | print random hex
+random-string| print random string of alphabets `a-zA-Z0-9`
 
 #### Git Commands
 YADR will take over your ~/.gitconfig, so if you want to store your git username and other settings, please put them in ~/.gitconfig.user

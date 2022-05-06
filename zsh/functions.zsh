@@ -309,9 +309,6 @@ function dc {
   fi
   docker-compose -f $docker_file_path $@
 }
-function get_ip_of_ssh_hostname {
-  ssh -G $1 | awk '/^hostname / { print $2  }'
-}
 unalias gc 2>/dev/null
 unalias gcm 2>/dev/null
 function gc {
@@ -334,21 +331,3 @@ function gc {
 function gcm {
   (gc --message $*) || return
 }
-
-function random_hex {
-  openssl rand -hex $(expr $1 / 2)
-}
-
-function random-string {
-    cat /dev/urandom |  LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
-}
-
-function list-large-files {
-  LIST=`du $1`
-  echo $LIST | grep '^[0-9.]*K.' | sort -n
-  echo $LIST | grep '^[0-9.]*M.' | sort -n
-  echo $LIST | grep '^[0-9.]*G.' | sort -n
-}
-yell() { echo "$0: $*" >&2; }
-die() { yell "$*"; exit 111; }
-try() { "$@" || die "cannot $*"; }
