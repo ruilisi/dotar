@@ -1,8 +1,7 @@
 <p align="center">
-  <img align="center" src="logo.png" width="150px" height="150px" />
+  <img align="center" src="logo.png" height="150px" />
 </p>
-<h1 align="center">Dotar</h1>
-<p align="center">Dotar is an all-in-one dev configuration for your mac/linux which includes setup for zsh, spacevim(nvim), tmux and many more</p>
+<p align="center"><b>Dotar</b> is an all-in-one dev configuration for your mac/linux which includes setup for zsh, spacevim(nvim), tmux and many more</p>
 
 # The story
 Dotar got its name by the combination of `dot` and `tar` which means package(`tar`) dotfiles togeter.
