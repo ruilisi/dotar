@@ -17,7 +17,6 @@ for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
 
 export HELM_HOME="$HOME/.helm"
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
 pathAppend "$GOPATH/bin:$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 export NVM_DIR="$HOME/.nvm"
