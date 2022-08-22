@@ -2,13 +2,13 @@
 export EDITOR=vim
 
 #### Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
-export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
-#export NDK_PROJECT_PATH=$HOME/Projects/rallets-android/src/main
-export NDK_PROJECT_PATH=src/main
-export PATH=$PATH:$HOME/Android/sdk/platform-tools:$HOME/Android/sdk/tools/
+#export ANDROID_HOME=$HOME/Library/Android/sdk
+#export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+##export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
+#export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
+##export NDK_PROJECT_PATH=$HOME/Projects/rallets-android/src/main
+#export NDK_PROJECT_PATH=src/main
+#export PATH=$PATH:$HOME/Android/sdk/platform-tools:$HOME/Android/sdk/tools/
 
 #### Qiniu
 QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
@@ -16,7 +16,7 @@ QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
 #### Java
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 if [ "$(uname)" = "Darwin" ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
 fi
 
