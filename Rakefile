@@ -58,7 +58,6 @@ end
 desc 'install spacevim and related config files'
 task :install_spacevim do
   run 'curl -sLf https://spacevim.org/install.sh | sed "s;github.com/SpaceVim;yuancode.co/ruilisi;" | bash'
-  install_files(Dir.glob('SpaceVim*'))
 end
 
 desc 'Update spacevim'
