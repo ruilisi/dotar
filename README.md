@@ -179,7 +179,7 @@ PRE s     |Split panes up and down
 PRE v     |Split panes left and right
 PRE x     |Kill pane
 PRE h(jkl)|←(↓↑→)Move dividing line
-PRE ,     |Switch to Tmux command line mode
+PRE ,     |Rename window
 PRE d     |Exit Session
 PRE D     |Exit Session
 PRE 1     |Enter pane 1
@@ -301,6 +301,13 @@ The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view t
 - `SPC p /` - fuzzy search for text in current project
 - `SPC c l` - toggle comment lines
 - `SPC c p` - toggle comment paragraphs
+
+#### Search text
+- `SPC s J` - Search text under cursor in current project
+
+#### Help
+- `SPC h d k` - Start a input prompt, Then press the key bindings you want to describe
+
 
 ## iTerm
 

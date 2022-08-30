@@ -21,6 +21,7 @@ task :link_files do
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
   run %(
+    rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   )
 end
@@ -37,11 +38,9 @@ task install: %i[submodule_init submodules] do
   install_rvm_binstubs
 
   Rake::Task['link_files'].execute
-  Rake::Task['install_tools'].execute
   Rake::Task['install_prezto'].execute
   Rake::Task['install_spacevim'].execute
   Rake::Task['install_asdf'].execute
-  Rake::Task['install_node_modules'].execute
 
   install_fonts
 
@@ -80,19 +79,6 @@ task :install_asdf do
     asdf plugin-add kubetail https://github.com/janpieper/asdf-kubetail.git
     asdf install
   )
-end
-
-desc 'Install tools which are necessary for developers'
-task :install_tools do
-  if macos?
-    run %(
-      brew install proxychains-ng
-    )
-  else
-    run %(
-      apt install proxychains
-    )
-  end
 end
 
 desc 'Prepare necessary components for spacevim/typescript'
@@ -286,10 +272,6 @@ def ask(message, values)
   end
   selection = selection.to_i - 1
   values[selection]
-end
-
-def install_node_modules
-  run('command -v yarn && yarn')
 end
 
 def install_prezto
