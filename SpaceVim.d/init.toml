@@ -37,6 +37,8 @@
     project_auto_root = true
     project_rooter_outermost = false
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '!packages/']
+    default_indent = 4
+    expand_tab = false
 
 # Enable autocomplete layer
 [[layers]]
@@ -88,6 +90,7 @@ name = "lang#markdown"
 
 [[layers]]
 name = "lang#go"
+enabled_linters = ['golangci_lint']
 
 [[layers]]
 name = "lang#c"

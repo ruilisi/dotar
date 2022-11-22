@@ -116,6 +116,7 @@
   excludesfile = ~/.yadr/git/gitignore
 	quotePath = false
 	commitGraph = true
+	pager = less -x4
 [advice]
   statusHints = false
 [diff]
