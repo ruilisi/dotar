@@ -5,7 +5,7 @@ function! paiyou#before() abort
         \ 'args': ['--stdin', '--stdin-filepath', '"%:p"', '--parser', 'typescript'],
         \ 'stdin': 1
         \ }
-  let g:neoformat_enabled_typescriptreact = ['tsfmt', 'prettier']
+  let g:neoformat_enabled_typescriptreact = ['prettier']
   let g:neoformat_enabled_ruby = ['rubocop']
 endfunction
 

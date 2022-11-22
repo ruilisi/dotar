@@ -24,16 +24,6 @@ function post {
 function search_installed_packages {
   dpkg --get-selections | grep $1
 }
-function set_anonymous {
-  git filter-branch --env-filter '
-  if [ "$GIT_AUTHOR_NAME" = "ralletstellar" ]; then \
-    export GIT_AUTHOR_NAME="Anonymous" GIT_AUTHOR_EMAIL="anonymous@anonymous.com"; \
-  fi
-  '
-}
-function genAndroidKeystore {
-  keytool -genkey -v -keystore /tmp/.keystore -alias rallets -keyalg RSA -keysize 2048 -validity 10000
-}
 function delete_except_latest {
   total=`ll | wc -l`
   num_to_delete=$((total-$1))

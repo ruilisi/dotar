@@ -21,10 +21,9 @@ alias yup='yadr update-plugins'
 alias yip='yadr init-plugins'
 
 # PS
-alias psa="ps aux"
-alias psg="ps aux | grep "
-alias psr='ps aux | grep ruby'
-
+psm() {
+  ps aux | awk 'NR>1 {$5=int($5/1024)"M";$6=int($6/1024)"M";}{ print;}'
+}
 # Moving around
 alias cdb='cd -'
 alias cls='clear;ls'
@@ -130,6 +129,26 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gfR='gf origin master; gwR origin/master'
+alias gpb='git push origin "$(git-branch-current 2> /dev/null):build"'
+alias gfs="gs;gfr;gsp"
+git_rebase_to_origin() {
+  BRANCH=${1:-master}
+  DIRTY=false
+  git fetch origin
+  [[ -n $(git status -s) ]] && DIRTY=true
+  $DIRTY && echo "Git is dirty"
+  $DIRTY && (git add .; git stash)
+  git rebase origin/$BRANCH
+  $DIRTY && (git stash pop; git reset HEAD)
+}
+git_rm_tag_of_remote() {
+  TAG=$1
+  REMOTE=${2:-origin}
+  git tag -d $TAG
+  git push --delete $REMOTE $TAG
+}
+git_log_history='git log -p --'
 
 # Common shell functions
 alias less='less -r'
@@ -260,3 +279,6 @@ alias docker_restart_in_mac='killall Docker && open /Applications/Docker.app'
 ## source files
 alias ss="source ~/.zshrc"
 alias delete_all_binaries="find . -type f -perm -u+x -not -path './.git/*' | xargs rm"
+
+## grep && ag
+alias agq="ag -Q"
