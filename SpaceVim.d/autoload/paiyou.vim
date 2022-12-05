@@ -16,6 +16,8 @@ function! paiyou#after() abort
         \}
   let g:ale_fix_on_save = 1
   let g:ctrlp_max_files=0
+  let g:neoformat_enabled_javascript = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
+  let g:neoformat_enabled_javascriptreact = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
 endfunction
 
 " load customized settings
