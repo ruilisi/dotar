@@ -18,6 +18,7 @@ function! paiyou#after() abort
   let g:ctrlp_max_files=0
   let g:neoformat_enabled_javascript = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
   let g:neoformat_enabled_javascriptreact = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
+  call SpaceVim#layers#core#tabline#get()
 endfunction
 
 " load customized settings
