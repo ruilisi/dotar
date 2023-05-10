@@ -37,7 +37,6 @@
     project_auto_root = true
     project_rooter_outermost = false
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '!packages/']
-    default_indent = 4
     expand_tab = false
 
 # Enable autocomplete layer
@@ -106,9 +105,23 @@ format_on_save = true
 [[layers]]
 name = "lang#python"
 
+[[layers]]
+name = "tools"
+
 [[custom_plugins]]
 repo = "https://github.com/tveskag/nvim-blame-line.git"
 merged = false
 
 [[custom_plugins]]
 repo = "https://github.com/zivyangll/git-blame.vim"
+
+[[layers]]
+name = "gtags"
+gtagslabel = "pygments"
+
+[[layers]]
+name = "lang#rust"
+
+[[layers]]
+name = "lsp"
+enabled_clients = ['pyright']
