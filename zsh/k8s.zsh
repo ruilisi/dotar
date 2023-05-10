@@ -121,6 +121,10 @@ function klogs {
         DEPLOYMENT="$2"
         shift; shift
         ;;
+      -t)
+        TAIL="$2"
+        shift; shift
+        ;;
       -i)
         INSTANCE="$2"
         shift; shift
@@ -133,10 +137,10 @@ function klogs {
   done
 
   if [[ "$DEPLOYMENT" != "" ]]; then
-    kubectl logs -f deployment/$DEPLOYMENT --all-containers=true --since=24h --pod-running-timeout=2s $finalopts
+    kubectl logs -f deployment/$DEPLOYMENT --all-containers=true --since=24h --pod-running-timeout=2s $finalopts 2>&1
   elif  [[ "$INSTANCE" != "" ]]; then
     while true; do
-      kubectl logs -f --max-log-requests=10 -l app.kubernetes.io/instance=$INSTANCE 1>&0
+      kubectl logs -f --tail ${TAIL:-100} -l app.kubernetes.io/instance=$INSTANCE 2>&1
       echo "Waiting..."
       sleep 2
     done
