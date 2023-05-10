@@ -142,6 +142,14 @@ function klogs {
     done
   fi
 }
+function k_down_file {
+  instance=$1
+  pod_path=$2
+  local_dir=$3
+  for pod in `k get pods -l app.kubernetes.io/instance=$instance -o custom-columns=":metadata.name"`; do
+    k cp $pod:$pod_path $local_dir/${pod}_$(basename $pod_path) --retries=10
+  done
+}
 function k_delete_evicted {
   k delete pod `k get pods | grep Evicted | awk '{print $1}'`
 }
