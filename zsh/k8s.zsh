@@ -155,7 +155,7 @@ function k_instance_down_file {
   done
 }
 function k_instance_tail_file {
-  zx/k_instance_tail_file.mjs $@
+  ~/.yadr/zsh/zx/k_instance_tail_file.mjs $@
 }
 function k_delete_evicted {
   k delete pod `k get pods | grep Evicted | awk '{print $1}'`
