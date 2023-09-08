@@ -140,7 +140,7 @@ function klogs {
     kubectl logs -f deployment/$DEPLOYMENT --all-containers=true --since=24h --pod-running-timeout=2s $finalopts 2>&1
   elif  [[ "$INSTANCE" != "" ]]; then
     while true; do
-      kubectl logs -f --tail ${TAIL:-100} -l app.kubernetes.io/instance=$INSTANCE 2>&1
+      kubectl logs -f --tail ${TAIL:-100} -l app.kubernetes.io/instance=$INSTANCE $finalopts 2>&1
       echo "Waiting..."
       sleep 2
     done
