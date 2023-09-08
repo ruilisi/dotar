@@ -157,6 +157,9 @@ function k_instance_down_file {
 function k_instance_tail_file {
   ~/.yadr/zsh/zx/k_instance_tail_file.mjs $@
 }
+function git_search_commit {
+  ~/.yadr/zsh/zx/git_search_commit.mjs $@
+}
 function k_delete_evicted {
   k delete pod `k get pods | grep Evicted | awk '{print $1}'`
 }
