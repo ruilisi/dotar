@@ -109,43 +109,14 @@ function kcp {
   fi
 }
 
-function klogs {
-  finalopts=()
-  while [[ $@ != "" ]] do
-    case $1 in
-      --context=*)
-        KCONTEXT="${i#*=}"
-        shift
-        ;;
-      -d)
-        DEPLOYMENT="$2"
-        shift; shift
-        ;;
-      -t)
-        TAIL="$2"
-        shift; shift
-        ;;
-      -i)
-        INSTANCE="$2"
-        shift; shift
-        ;;
-      *)
-        finalopts+=($1)
-        shift
-        ;;
-    esac
-  done
+for zxfunc in klogs k_instance_tail_file git_search_commit
+do
+  $zxfunc() {
+    ~/.yadr/zsh/zx/$0.mjs "$@"
+  }
+done
 
-  if [[ "$DEPLOYMENT" != "" ]]; then
-    kubectl logs -f deployment/$DEPLOYMENT --all-containers=true --since=24h --pod-running-timeout=2s $finalopts 2>&1
-  elif  [[ "$INSTANCE" != "" ]]; then
-    while true; do
-      kubectl logs -f --tail ${TAIL:-100} -l app.kubernetes.io/instance=$INSTANCE $finalopts 2>&1
-      echo "Waiting..."
-      sleep 2
-    done
-  fi
-}
+
 function k_instance_down_file {
   instance=$1
   file_path=$2
@@ -153,12 +124,6 @@ function k_instance_down_file {
   for pod in `k get pods -l app.kubernetes.io/instance=$instance -o custom-columns=":metadata.name"`; do
     k cp $pod:$file_path $local_dir/${pod}_$(basename $file_path) --retries=10
   done
-}
-function k_instance_tail_file {
-  ~/.yadr/zsh/zx/k_instance_tail_file.mjs $@
-}
-function git_search_commit {
-  ~/.yadr/zsh/zx/git_search_commit.mjs $@
 }
 function k_delete_evicted {
   k delete pod `k get pods | grep Evicted | awk '{print $1}'`
