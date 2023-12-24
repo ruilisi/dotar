@@ -320,4 +320,5 @@ vmap <localleader>js :!python -m json.tool<cr>
 " nvim-blame-line
 nnoremap <silent> <leader>b :ToggleBlameLine<CR>
 nnoremap <silent> <leader>s ::<C-u>call gitblame#echo()<CR>
+nnoremap <silent> <leader>-- :set cmdheight&<CR>
 
