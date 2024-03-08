@@ -30,8 +30,7 @@
     # Enable vim compatible mode, avoid changing origin vim key bindings
     vimcompatible = true
     filemanager = "nerdtree"
-    enable_neomake = false
-    enable_ale = true
+		lint_engine = 'ale'
     bootstrap_before = "paiyou#before"
     bootstrap_after = "paiyou#after"
     project_auto_root = true
@@ -66,6 +65,9 @@ name = "tmux"
 
 [[layers]]
 name = "lang#javascript"
+auto_fix = true
+enable_flow_syntax = true
+format_on_save = true
 
 [[layers]]
 name = "lang#typescript"

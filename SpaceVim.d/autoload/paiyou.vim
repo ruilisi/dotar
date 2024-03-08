@@ -11,13 +11,16 @@ endfunction
 
 function! paiyou#after() abort
   let g:ale_fixers = {
-        \   'javascript': ['eslint'],
+        \   'javascript': ['eslint', 'prettier'],
+        \   'typescript': ['eslint', 'prettier'],
         \   'ruby': ['rubocop'],
         \}
   let g:ale_fix_on_save = 1
   let g:ctrlp_max_files=0
-  let g:neoformat_enabled_javascript = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
-  let g:neoformat_enabled_javascriptreact = ['standard', 'semistandard', 'prettier', 'prettydiff', 'clangformat', 'esformatter', 'prettiereslint', 'eslint_d', 'denofmt']
+  let g:neoformat_enabled_javascript = ['eslint', 'prettier']
+  let g:neoformat_enabled_javascriptreact = ['eslint', 'prettier']
+  let g:neoformat_enabled_typescript = ['eslint', 'prettier']
+  let g:neoformat_enabled_typescriptreact = ['eslint', 'prettier']
   call SpaceVim#layers#core#tabline#get()
 endfunction
 
