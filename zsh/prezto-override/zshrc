@@ -29,6 +29,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -s $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
 
+export PATH="/usr/local/bin:$PATH"
+
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
