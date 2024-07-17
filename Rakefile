@@ -14,6 +14,7 @@ end
 
 # this has all the runcoms from this directory.
 task :link_files do
+  install_files(Dir.glob('SpaceVim.d')) if want_to_install?('Spacevim config dir')
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
