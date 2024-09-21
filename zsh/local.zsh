@@ -25,10 +25,3 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
 elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
     # Do something under Windows NT platform
 fi
-
-if [ -e ~/Projects/paiyou-hub/bin/rancher_setup.sh ]; then
-  source ~/Projects/paiyou-hub/bin/rancher_setup.sh
-fi
-
-[ -e ~/Projects/quanzhan/.myzshrc ] && source ~/Projects/quanzhan/.myzshrc
-

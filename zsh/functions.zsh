@@ -52,12 +52,6 @@ function cmd_exists() {
     echo N
   fi
 }
-function qshell_setup() {
-  if [[ $(cmd_exists qshell) == 'N' ]]; then
-    curl https://raw.githubusercontent.com/paiyou-network/scripts/master/install-qshell.sh | bash
-  fi
-  ~/Projects/paiyou-hub/bin/setup-qshell-account.sh
-}
 function qshell_upload() {
   qshell_setup
   bucket=assets
