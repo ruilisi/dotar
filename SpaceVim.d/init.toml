@@ -55,12 +55,6 @@ format_on_save = true
 enabled_linters = ['rubocop']
 
 [[layers]]
-name = "denite"
-
-[[layers]]
-name = "ctrlspace"
-
-[[layers]]
 name = "tmux"
 
 [[layers]]
@@ -98,12 +92,9 @@ enabled_linters = ['golangci_lint']
 name = "lang#c"
 
 [[layers]]
-name = "lang#swift"
-
-[[layers]]
 name = "format"
 auto_fix = true
-# format_on_save = true
+format_on_save = true
 
 [[layers]]
 name = "lang#python"
@@ -112,11 +103,11 @@ name = "lang#python"
 name = "tools"
 
 [[custom_plugins]]
-repo = "https://github.com/tveskag/nvim-blame-line.git"
+repo = "tveskag/nvim-blame-line.git"
 merged = false
 
 [[custom_plugins]]
-repo = "https://github.com/zivyangll/git-blame.vim"
+repo = "zivyangll/git-blame.vim"
 
 [[layers]]
 name = "gtags"

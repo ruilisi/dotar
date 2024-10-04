@@ -166,6 +166,10 @@ function dc {
 unalias gc 2>/dev/null
 unalias gcm 2>/dev/null
 function gc {
+	if [ -e .gitauthor ]; then
+		git commit --author="`cat .gitauthor`" --verbose $*
+		return
+	fi
   while true;do
     for user email in ${(kv)GIT_USERS}; do
       printf "%-20s" $user
