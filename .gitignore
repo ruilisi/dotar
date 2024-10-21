@@ -19,3 +19,4 @@ tags
 git/gitconfig
 .DS_Store
 node_modules
+.gitauthor
