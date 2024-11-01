@@ -272,7 +272,6 @@ alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn
 alias vim="nvim"
 
 ## docker
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias docker_restart_in_mac='killall Docker && open /Applications/Docker.app'
 
