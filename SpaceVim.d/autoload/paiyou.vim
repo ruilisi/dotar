@@ -10,7 +10,6 @@ function! paiyou#before() abort
 endfunction
 
 function! paiyou#after() abort
-	" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
   let g:ale_fixers = {
         \   'javascript': ['eslint', 'prettier'],
         \   'typescript': ['eslint', 'prettier'],

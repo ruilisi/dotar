@@ -120,3 +120,6 @@ name = "lang#rust"
 [[layers]]
 name = "lsp"
 enabled_clients = ['pyright']
+
+[[layers]]
+name = "leaderf"
