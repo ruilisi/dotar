@@ -53,7 +53,7 @@ default_height = 30
 [[layers]]
 name = "lang#ruby"
 format_on_save = true
-enabled_linters = ['rubocop']
+enabled_linters = []
 
 [[layers]]
 name = "tmux"
@@ -123,3 +123,9 @@ enabled_clients = ['pyright']
 
 [[layers]]
 name = "leaderf"
+
+[[layers]]
+name = 'core'
+filetree_show_hidden = true
+enable_smooth_scrolling = true
+

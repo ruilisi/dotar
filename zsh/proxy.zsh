@@ -9,7 +9,8 @@ set_ss_proxy() {
   export http_proxy=socks5://127.0.0.1:1080/
 }
 unset_proxy() {
-  unset all_proxy
   unset http_proxy
   unset https_proxy
+  unset ftp_proxy
+  unset no_proxy
 }
