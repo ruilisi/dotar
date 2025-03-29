@@ -7,6 +7,7 @@ QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
 
 #### Java
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 if [ "$(uname)" = "Darwin" ]; then
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then

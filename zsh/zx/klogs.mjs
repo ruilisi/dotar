@@ -2,6 +2,7 @@
 
 $.shell = "/usr/local/bin/zsh";
 $.prefix += "source ~/.yadr/zsh/k8s.zsh;";
+$.verbose = true;
 
 if (argv.h) {
   console.info(`Usage:
