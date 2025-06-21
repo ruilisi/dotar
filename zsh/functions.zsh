@@ -166,10 +166,22 @@ function dc {
 unalias gc 2>/dev/null
 unalias gcm 2>/dev/null
 function gc {
-	if [ -e .gitauthor ]; then
-		git commit --author="`cat .gitauthor`" --verbose $*
+	local dir="$(pwd)"
+  local home_dir="$HOME"
+
+  while [[ ! -e "$dir/.gitauthor" && "$dir" != "$home_dir" ]]; do
+    dir="$(dirname "$dir")"
+  done
+
+	if [ -e "$dir/.gitauthor" ]; then
+    git commit --author="`cat $dir/.gitauthor`" --verbose "$@"
 		return
-	fi
+  else
+    echo ".gitauthor file not found."
+  fi
+}
+
+function gc_select {
   while true;do
     for user email in ${(kv)GIT_USERS}; do
       printf "%-20s" $user
