@@ -201,3 +201,7 @@ function gc_select {
 function gcm {
   (gc --message $*) || return
 }
+
+function reset_network {
+	sudo bash -c 'IFCE=$(route get default 2>/dev/null | awk "/interface: / {print \$2}"); ifconfig "$IFCE" down; ifconfig "$IFCE" up'
+}

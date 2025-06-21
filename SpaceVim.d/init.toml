@@ -36,7 +36,11 @@
     project_auto_root = true
     project_rooter_outermost = false
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '!packages/']
-    expand_tab = false
+    expandtab = true
+    tabstop = 4
+    shiftwidth = 4
+    softtabstop = 4
+    autocomplete_method = "nvim-cmp"
 
 # Enable autocomplete layer
 [[layers]]
@@ -77,6 +81,7 @@ name = "VersionControl"
 [[layers]]
 name = "checkers"
 enable_neomake = false
+open_error_list = 0
 enable_ale = true
 
 [[layers]]
@@ -87,7 +92,8 @@ name = "lang#markdown"
 
 [[layers]]
 name = "lang#go"
-enabled_linters = ['golangci_lint']
+format_on_save = true
+enabled_linters = ["staticcheck", "govet"]
 
 [[layers]]
 name = "lang#c"
@@ -119,7 +125,9 @@ name = "lang#rust"
 
 [[layers]]
 name = "lsp"
-enabled_clients = ['pyright']
+enabled_clients = ['pyright', "gopls"]
+
+
 
 [[layers]]
 name = "leaderf"
@@ -129,3 +137,6 @@ name = 'core'
 filetree_show_hidden = true
 enable_smooth_scrolling = true
 
+
+[[layers]]
+name = "bookmarks"
